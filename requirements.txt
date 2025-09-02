@@ -14,4 +14,16 @@ pytest
 python-dotenv
 lxml
 sec-edgar-downloader
+xgboost
+lightgbm
+nltk
+textblob
+wordcloud
+fpdf2
+reportlab
+weasyprint
+markdown
+pdfkit
+markdown2
+pymupdf
 
