@@ -1,0 +1,123 @@
+ticker,filing_date,category,content_summary,stock_price,volume,recent_volatility,recent_trend,sentiment_score,urgency_score,financial_impact_score,market_relevance_score,predicted_direction,predicted_probability,predicted_return_5d,predicted_return_9d,actual_return_5d,actual_return_9d,prediction_accuracy,model_confidence,test_config
+MSFT,2014-01-24,2.02,Dividend increase and share buyback program announcement,30.6,76395500,0.0169,0.0025,0.72,0.369,0.273,0.565,positive,0.51,-0.0144,-0.0184,0.028,-0.0171,1.0,0.51,msft_10year
+MSFT,2014-02-22,2.01,Major contract award from enterprise customer,31.81,38021300,0.0138,0.0051,0.606,0.269,0.815,0.499,positive,0.668,0.0073,0.0335,0.0087,0.0045,1.0,0.668,msft_10year
+MSFT,2014-04-02,8.01,Cost reduction initiative and restructuring plan,34.34,30139600,0.0142,0.0024,0.31,0.466,0.301,0.434,negative,0.669,-0.0109,-0.0335,-0.0402,-0.0149,1.0,0.669,msft_10year
+MSFT,2014-05-03,2.02,Regulatory compliance update and filing,33.02,22460900,0.0116,-0.0015,0.652,0.145,0.536,0.877,positive,0.65,-0.0011,0.0207,0.0137,0.0173,1.0,0.65,msft_10year
+MSFT,2014-05-30,8.01,Major contract award from enterprise customer,34.53,34567600,0.0094,0.0031,0.704,0.389,0.679,0.549,positive,0.663,-0.0023,0.0042,0.0132,-0.0088,1.0,0.663,msft_10year
+MSFT,2014-06-29,2.03,Executive leadership change with new CEO appointment,35.17,30793100,0.0093,0.0001,0.512,0.0,0.864,0.514,positive,0.653,-0.0062,0.0123,0.0019,0.0106,1.0,0.653,msft_10year
+MSFT,2014-07-28,8.01,Research and development milestone achievement,37.02,27763100,0.0101,-0.0005,0.393,0.084,0.614,0.547,positive,0.512,-0.0163,-0.0362,-0.0185,-0.0157,0.0,0.512,msft_10year
+MSFT,2014-08-18,8.01,Product launch announcement for new software platform,38.47,28139500,0.0085,0.0073,0.557,0.267,0.386,0.669,positive,0.511,-0.005,0.034,-0.0071,-0.0053,0.0,0.511,msft_10year
+MSFT,2014-09-22,2.02,Research and development milestone achievement,39.51,33430300,0.0088,-0.0006,0.159,0.173,0.515,0.823,negative,0.566,-0.0362,0.0,-0.0043,-0.0101,1.0,0.566,msft_10year
+MSFT,2014-10-19,2.02,Quarterly earnings results announcement with revenue and profit details,37.41,34527900,0.0154,-0.0034,0.493,0.418,0.553,0.442,positive,0.507,0.0183,0.0299,0.0415,0.0651,1.0,0.507,msft_10year
+MSFT,2014-11-20,2.01,Cybersecurity incident disclosure and response,41.59,21510600,0.0103,0.0008,0.477,0.134,0.408,0.768,positive,0.508,-0.0023,0.0033,-0.0183,0.0029,0.0,0.508,msft_10year
+MSFT,2014-12-27,5.02,Material agreement termination notice,40.89,13197800,0.0148,0.0023,0.57,0.48,0.643,0.31,positive,0.547,-0.0054,-0.0113,-0.0324,-0.0144,0.0,0.547,msft_10year
+MSFT,2015-02-01,2.02,Quarterly earnings results announcement with revenue and profit details,35.25,50352500,0.0274,-0.0122,0.549,0.794,0.446,0.78,positive,0.554,-0.0221,0.0313,0.0262,0.0627,1.0,0.554,msft_10year
+MSFT,2015-02-22,8.01,Quarterly earnings results announcement with revenue and profit details,37.97,32518800,0.0262,0.0054,0.506,0.653,0.89,0.552,positive,0.668,0.0179,-0.0013,-0.0061,-0.0405,0.0,0.668,msft_10year
+MSFT,2015-03-23,5.03,Dividend increase and share buyback program announcement,36.9,25513300,0.0108,0.0025,0.262,0.227,0.389,0.834,negative,0.573,-0.0298,-0.0087,-0.0522,-0.0319,1.0,0.573,msft_10year
+MSFT,2015-04-14,2.01,Cost reduction initiative and restructuring plan,36.35,27343600,0.0129,0.0042,0.665,0.103,0.397,0.647,positive,0.554,0.0009,0.0645,0.0173,0.1633,1.0,0.554,msft_10year
+MSFT,2015-05-12,2.02,Executive leadership change with new CEO appointment,40.97,34184600,0.0269,-0.0022,0.255,0.386,0.718,0.384,negative,0.534,0.0008,0.0127,0.0054,0.0061,0.0,0.534,msft_10year
+MSFT,2015-06-16,8.01,Dividend increase and share buyback program announcement,39.79,28704100,0.0098,-0.0009,0.415,0.048,0.613,0.472,positive,0.506,0.0055,-0.0037,-0.0072,-0.0396,0.0,0.506,msft_10year
+MSFT,2015-07-19,5.02,Executive leadership change with new CEO appointment,40.62,30631900,0.009,0.0064,0.529,0.22,0.686,0.593,positive,0.605,0.0106,0.0084,-0.0335,-0.0047,0.0,0.605,msft_10year
+MSFT,2015-08-09,2.02,Major contract award from enterprise customer,40.97,23079900,0.0137,0.0049,0.626,0.0,0.587,0.481,positive,0.581,-0.0011,-0.011,-0.0002,-0.084,0.0,0.581,msft_10year
+MSFT,2015-09-06,8.01,Regulatory compliance update and filing,38.24,32469800,0.0273,0.0095,0.692,0.611,0.985,0.597,positive,0.79,0.0096,0.0351,0.0021,0.005,1.0,0.79,msft_10year
+MSFT,2015-10-06,8.01,Strategic acquisition of technology company to expand market presence,40.78,27711500,0.0115,0.0072,0.497,0.382,0.328,0.527,negative,0.565,-0.0027,0.0102,-0.0026,0.0207,1.0,0.565,msft_10year
+MSFT,2015-11-07,2.02,Executive leadership change with new CEO appointment,47.86,32851200,0.0243,0.0014,0.551,0.353,0.455,0.614,positive,0.525,-0.0133,0.017,-0.0379,-0.0112,0.0,0.525,msft_10year
+MSFT,2015-12-08,2.02,Executive leadership change with new CEO appointment,48.94,32878000,0.0118,0.0032,0.74,0.112,0.481,0.503,positive,0.589,0.0011,-0.0141,-0.0106,-0.0172,0.0,0.589,msft_10year
+MSFT,2016-01-14,2.02,Strategic acquisition of technology company to expand market presence,46.59,52381900,0.016,-0.0047,0.239,0.331,0.727,0.502,negative,0.513,0.005,-0.0405,-0.0154,-0.0198,1.0,0.513,msft_10year
+MSFT,2016-02-21,8.01,Regulatory compliance update and filing,46.52,25008300,0.0213,0.0079,0.793,0.394,0.621,0.424,positive,0.65,-0.0016,-0.0052,-0.0336,-0.0118,0.0,0.65,msft_10year
+MSFT,2016-03-15,2.03,Product launch announcement for new software platform,48.02,31691700,0.0159,0.0043,0.465,0.289,0.567,0.278,negative,0.532,-0.0161,0.0131,-0.007,0.0129,1.0,0.532,msft_10year
+MSFT,2016-04-17,2.01,Product launch announcement for new software platform,49.89,23786000,0.0092,0.0038,0.663,0.126,0.368,0.254,negative,0.537,-0.0455,-0.0507,-0.077,-0.1167,1.0,0.537,msft_10year
+MSFT,2016-05-18,2.02,Financial guidance update for upcoming quarter,44.77,23842400,0.0195,0.0007,0.827,0.262,0.787,0.601,positive,0.766,0.0195,0.0419,0.0312,0.0429,1.0,0.766,msft_10year
+MSFT,2016-06-11,2.01,Partnership agreement with industry leader,44.61,83217800,0.013,-0.0061,0.185,0.305,0.144,0.599,negative,0.748,0.0169,0.0,-0.0014,-0.0062,1.0,0.748,msft_10year
+MSFT,2016-07-17,2.03,Market expansion into new geographic region,48.01,31433900,0.0156,0.0059,0.451,0.364,0.216,0.408,negative,0.652,0.0109,0.0072,0.0513,0.0504,0.0,0.652,msft_10year
+MSFT,2016-08-14,2.02,Partnership agreement with industry leader,51.71,19283900,0.0135,0.003,0.739,0.33,0.61,0.513,positive,0.643,0.007,0.034,-0.0016,0.0047,0.0,0.643,msft_10year
+MSFT,2016-09-08,2.02,Research and development milestone achievement,50.32,35113900,0.0057,-0.0035,0.491,0.092,0.898,0.464,positive,0.648,0.0233,0.0098,0.0185,0.0286,1.0,0.648,msft_10year
+MSFT,2016-10-01,5.02,Market expansion into new geographic region,51.41,19189500,0.0103,0.0012,0.477,0.293,0.466,0.488,negative,0.525,0.018,-0.0048,0.0108,0.0,0.0,0.525,msft_10year
+MSFT,2016-10-30,8.01,Product launch announcement for new software platform,53.64,26434700,0.0121,0.0044,0.623,0.303,0.261,0.758,positive,0.505,-0.0105,-0.0505,0.0083,-0.015,1.0,0.505,msft_10year
+MSFT,2016-11-27,2.02,Executive leadership change with new CEO appointment,54.63,20732600,0.0124,0.0055,0.501,0.144,0.598,0.784,positive,0.596,0.0156,0.0124,-0.0064,0.0224,0.0,0.596,msft_10year
+MSFT,2017-01-02,7.01,Cybersecurity incident disclosure and response,56.4,20694100,0.01,-0.0018,0.528,0.306,0.683,0.405,positive,0.565,-0.0223,-0.0101,0.0006,-0.0008,1.0,0.565,msft_10year
+MSFT,2017-01-31,5.02,Product launch announcement for new software platform,58.27,25270500,0.0079,0.0038,0.559,0.178,0.229,0.693,negative,0.546,0.0064,0.0329,-0.0189,0.0011,1.0,0.546,msft_10year
+MSFT,2017-03-08,8.01,Market expansion into new geographic region,58.93,21510900,0.0066,0.0007,0.446,0.122,0.344,0.315,negative,0.621,0.0049,-0.0262,-0.0037,-0.012,1.0,0.621,msft_10year
+MSFT,2017-04-03,5.02,Product launch announcement for new software platform,59.6,12997400,0.0053,0.0012,0.585,0.027,0.586,0.577,positive,0.584,0.0133,0.0078,-0.0038,-0.0052,0.0,0.584,msft_10year
+MSFT,2017-04-30,2.02,Quarterly earnings results announcement with revenue and profit details,62.94,31954400,0.0067,0.0067,0.516,0.084,0.709,0.569,positive,0.604,0.0179,-0.0038,-0.0068,-0.0148,0.0,0.604,msft_10year
+MSFT,2017-05-28,5.02,Major contract award from enterprise customer,64.21,17072800,0.0095,0.0017,0.249,0.024,0.387,0.594,negative,0.627,0.0111,-0.0211,0.03,-0.0089,0.0,0.627,msft_10year
+MSFT,2017-07-05,2.02,Executive leadership change with new CEO appointment,62.53,21117600,0.0115,-0.0026,0.479,0.324,0.296,0.729,negative,0.544,-0.003,0.046,0.0467,0.0771,0.0,0.544,msft_10year
+MSFT,2017-08-11,8.01,Strategic acquisition of technology company to expand market presence,66.12,21443700,0.0073,-0.0003,0.338,0.0,0.661,0.61,positive,0.521,-0.0047,-0.0197,0.0052,0.008,1.0,0.521,msft_10year
+MSFT,2017-09-18,7.01,Cybersecurity incident disclosure and response,69.17,16093300,0.0074,0.0031,0.5,0.238,0.531,0.598,positive,0.532,-0.0152,-0.0073,-0.0289,-0.011,0.0,0.532,msft_10year
+MSFT,2017-10-11,8.01,Executive leadership change with new CEO appointment,70.71,16876500,0.0072,0.0039,0.554,0.14,0.608,0.247,positive,0.514,-0.0105,0.042,0.0102,0.0196,1.0,0.514,msft_10year
+MSFT,2017-11-16,8.01,Product launch announcement for new software platform,76.66,20962800,0.0151,-0.0007,0.427,0.366,0.32,0.496,negative,0.602,-0.0013,-0.0166,0.0007,0.0117,0.0,0.602,msft_10year
+MSFT,2017-12-24,8.01,Product launch announcement for new software platform,78.79,14145800,0.0139,0.0004,0.384,0.3,0.492,0.461,negative,0.557,-0.0091,0.0081,0.0051,0.0324,0.0,0.557,msft_10year
+MSFT,2018-01-16,8.01,Dividend increase and share buyback program announcement,81.41,36599700,0.0088,0.0031,0.784,0.119,0.632,0.504,positive,0.667,0.0236,0.0584,0.0402,0.063,1.0,0.667,msft_10year
+MSFT,2018-02-13,2.01,Strategic acquisition of technology company to expand market presence,82.77,26407700,0.0233,-0.0058,0.666,0.631,0.501,0.765,positive,0.62,0.0133,0.0428,0.0233,0.0536,1.0,0.62,msft_10year
+MSFT,2018-03-24,8.01,Quarterly earnings results announcement with revenue and profit details,86.82,56396800,0.0222,-0.0003,0.608,0.51,0.355,0.342,negative,0.546,-0.0371,-0.0338,-0.0434,-0.0321,1.0,0.546,msft_10year
+MSFT,2018-04-22,2.02,Executive leadership change with new CEO appointment,88.27,22331800,0.0252,0.003,0.507,0.384,0.565,0.765,positive,0.582,-0.006,-0.0055,-0.0192,-0.002,0.0,0.582,msft_10year
+MSFT,2018-05-14,8.01,Market expansion into new geographic region,90.1,24594000,0.013,0.0045,0.668,0.231,0.435,0.592,positive,0.559,0.0178,0.0214,0.0062,0.0115,1.0,0.559,msft_10year
+MSFT,2018-06-10,8.01,Partnership agreement with industry leader,93.96,23490900,0.0085,0.0034,0.313,0.22,0.523,0.368,negative,0.592,-0.006,-0.0107,-0.0019,-0.0063,1.0,0.592,msft_10year
+MSFT,2018-07-16,7.01,Research and development milestone achievement,98.51,25901700,0.0108,0.0075,0.595,0.262,0.653,0.639,positive,0.627,0.0105,0.0076,0.0161,-0.0055,1.0,0.627,msft_10year
+MSFT,2018-08-24,5.03,Cybersecurity incident disclosure and response,101.18,17234000,0.0088,0.0007,0.283,0.188,0.982,0.626,positive,0.631,0.0397,0.0218,0.0363,-0.0018,1.0,0.631,msft_10year
+MSFT,2018-09-18,2.02,Quarterly earnings results announcement with revenue and profit details,104.26,21728400,0.011,0.003,0.479,0.107,0.467,0.762,positive,0.531,-0.0005,0.019,0.0204,0.0309,1.0,0.531,msft_10year
+MSFT,2018-10-08,2.02,Cybersecurity incident disclosure and response,104.78,26198600,0.0097,-0.0016,0.221,0.233,0.639,0.556,negative,0.545,-0.0079,-0.0009,-0.0112,-0.0234,1.0,0.545,msft_10year
+MSFT,2018-10-28,7.01,Research and development milestone achievement,96.93,55162000,0.0268,-0.007,0.519,0.618,0.542,0.546,positive,0.534,-0.0041,0.0196,0.0352,0.0551,1.0,0.534,msft_10year
+MSFT,2018-11-28,1.01,Quarterly earnings results announcement with revenue and profit details,104.16,46788500,0.0215,0.0066,0.265,0.475,0.306,0.796,negative,0.612,-0.0329,-0.0348,-0.0174,-0.0184,1.0,0.612,msft_10year
+MSFT,2018-12-21,5.03,Cybersecurity incident disclosure and response,92.08,111242100,0.0224,-0.0099,0.328,0.442,0.529,0.902,positive,0.523,0.0051,0.0223,0.034,0.039,1.0,0.523,msft_10year
+MSFT,2019-01-14,2.02,Quarterly earnings results announcement with revenue and profit details,95.66,28437100,0.027,0.0007,0.431,0.537,0.747,0.5,positive,0.571,0.0246,0.0285,0.0356,0.0297,1.0,0.571,msft_10year
+MSFT,2019-02-03,2.02,Research and development milestone achievement,99.12,31315100,0.0168,0.0003,0.575,0.34,0.64,0.454,positive,0.577,-0.0007,0.0329,-0.0046,0.0235,0.0,0.577,msft_10year
+MSFT,2019-02-28,7.01,Product launch announcement for new software platform,105.47,29083900,0.0122,0.0057,0.436,0.291,0.647,0.534,positive,0.54,0.0083,0.0011,-0.0146,0.022,0.0,0.54,msft_10year
+MSFT,2019-03-28,5.02,Partnership agreement with industry leader,111.03,25399800,0.0112,0.0004,0.707,0.066,0.377,0.745,positive,0.582,0.0021,0.0381,0.0165,0.0203,1.0,0.582,msft_10year
+MSFT,2019-04-26,2.02,Executive leadership change with new CEO appointment,122.28,23654900,0.0085,0.008,0.339,0.147,0.717,0.728,positive,0.568,-0.016,0.0132,-0.0076,-0.0338,0.0,0.568,msft_10year
+MSFT,2019-05-16,8.01,Partnership agreement with industry leader,121.01,25770500,0.0158,0.0005,0.719,0.198,0.517,0.512,positive,0.597,-0.003,0.0095,-0.0143,-0.0343,0.0,0.597,msft_10year
+MSFT,2019-06-05,2.02,Research and development milestone achievement,120.78,21459000,0.0165,0.0016,0.389,0.346,0.627,0.641,positive,0.535,0.0029,0.0389,0.0352,0.0616,1.0,0.535,msft_10year
+MSFT,2019-07-13,2.02,Dividend increase and share buyback program announcement,131.24,16651500,0.0096,0.0026,0.567,0.215,0.987,0.75,positive,0.771,0.0075,0.0307,-0.0034,0.0176,0.0,0.771,msft_10year
+MSFT,2019-08-19,5.02,Financial guidance update for upcoming quarter,130.13,21170800,0.0175,0.0022,0.529,0.484,0.221,0.681,negative,0.564,0.0023,-0.0184,-0.0111,-0.0089,1.0,0.564,msft_10year
+MSFT,2019-09-16,7.01,Major contract award from enterprise customer,130.25,17814200,0.0125,-0.0001,0.54,0.123,0.598,0.485,positive,0.552,0.0055,-0.0139,-0.0001,0.0119,0.0,0.552,msft_10year
+MSFT,2019-10-11,2.03,Financial guidance update for upcoming quarter,132.42,25446000,0.0119,0.0006,0.413,0.063,0.874,0.583,positive,0.631,0.0047,0.0201,-0.0163,0.0019,0.0,0.631,msft_10year
+MSFT,2019-11-09,5.03,Cost reduction initiative and restructuring plan,138.37,16732700,0.011,0.0014,0.549,0.228,0.341,0.671,negative,0.51,-0.0096,0.0297,0.0275,0.0276,0.0,0.51,msft_10year
+MSFT,2019-12-05,8.01,Cybersecurity incident disclosure and response,142.62,17869100,0.0058,0.0004,0.482,0.114,0.661,0.461,positive,0.549,0.0193,0.0067,0.0221,0.0296,1.0,0.549,msft_10year
+MSFT,2019-12-29,2.02,Cybersecurity incident disclosure and response,149.91,16348400,0.0066,0.0015,0.283,0.291,0.607,0.396,negative,0.565,-0.0007,-0.0063,-0.0001,0.0361,1.0,0.565,msft_10year
+MSFT,2020-01-24,5.02,Market expansion into new geographic region,157.0,24918100,0.0098,0.0026,0.651,0.146,0.878,0.686,positive,0.749,0.0301,0.0715,0.0314,0.1126,1.0,0.749,msft_10year
+MSFT,2020-02-21,1.01,Research and development milestone achievement,170.35,48572600,0.0185,-0.0028,0.498,0.333,0.751,0.56,positive,0.612,-0.0276,0.0039,-0.0928,-0.069,0.0,0.612,msft_10year
+MSFT,2020-03-26,8.01,Financial guidance update for upcoming quarter,142.79,57042300,0.0711,0.0124,0.524,1.0,0.377,0.537,negative,0.532,0.0275,0.0363,0.0276,0.1031,0.0,0.532,msft_10year
+MSFT,2020-05-03,8.01,Product launch announcement for new software platform,170.59,30372900,0.0288,0.0074,0.64,0.655,0.472,0.578,positive,0.561,0.0418,0.0211,0.0442,0.0242,1.0,0.561,msft_10year
+MSFT,2020-05-31,8.01,Dividend increase and share buyback program announcement,174.88,22622400,0.0116,-0.0009,0.261,0.321,0.22,0.329,negative,0.742,0.0124,-0.0028,0.0302,0.0269,0.0,0.742,msft_10year
+MSFT,2020-07-02,8.01,Dividend increase and share buyback program announcement,197.29,29315800,0.0201,0.0063,0.368,0.611,0.561,0.768,positive,0.525,0.0204,-0.0038,0.0359,-0.0113,1.0,0.525,msft_10year
+MSFT,2020-08-04,5.02,Major contract award from enterprise customer,203.68,28806400,0.0222,0.0058,0.518,0.469,0.443,0.443,negative,0.527,-0.0148,-0.0167,-0.0176,-0.0068,1.0,0.527,msft_10year
+MSFT,2020-09-10,2.02,Cost reduction initiative and restructuring plan,195.63,33620100,0.0254,-0.0122,0.504,0.657,0.681,0.362,positive,0.546,0.0003,-0.0229,-0.0178,-0.0041,0.0,0.546,msft_10year
+MSFT,2020-10-07,2.03,Cybersecurity incident disclosure and response,201.91,19925800,0.0177,0.0016,0.609,0.362,0.52,0.476,positive,0.547,0.0097,0.0172,0.0431,0.02,1.0,0.547,msft_10year
+MSFT,2020-11-15,2.03,Product launch announcement for new software platform,208.29,24953300,0.0229,0.006,0.44,0.434,0.605,0.748,positive,0.568,-0.0135,0.0134,-0.0302,-0.012,0.0,0.568,msft_10year
+MSFT,2020-12-15,8.01,Product launch announcement for new software platform,205.85,27000600,0.0094,-0.0006,0.569,0.296,0.598,0.587,positive,0.584,0.0213,0.0026,0.0458,0.0468,1.0,0.584,msft_10year
+MSFT,2021-01-20,8.01,Major contract award from enterprise customer,215.67,37777300,0.0161,0.0063,0.443,0.311,1.0,0.253,positive,0.628,0.0184,0.0217,0.0382,0.0676,1.0,0.628,msft_10year
+MSFT,2021-02-21,2.02,Executive leadership change with new CEO appointment,225.96,36446900,0.0148,-0.0034,0.553,0.27,0.77,0.556,positive,0.64,0.0187,0.0128,0.0104,-0.0124,1.0,0.64,msft_10year
+MSFT,2021-03-31,5.02,Cost reduction initiative and restructuring plan,233.52,30338000,0.0166,0.0058,0.387,0.301,0.635,0.237,negative,0.544,0.0139,0.0075,0.0557,0.0708,0.0,0.544,msft_10year
+MSFT,2021-05-01,2.02,Dividend increase and share buyback program announcement,242.68,19626600,0.011,-0.0027,0.88,0.201,0.605,0.59,positive,0.712,0.0092,-0.011,-0.0186,-0.0147,0.0,0.712,msft_10year
+MSFT,2021-06-03,8.01,Regulatory compliance update and filing,242.21,25281100,0.0141,0.0026,0.48,0.447,0.729,0.648,positive,0.613,0.0113,0.0247,0.0283,0.0403,1.0,0.613,msft_10year
+MSFT,2021-07-07,1.01,Strategic acquisition of technology company to expand market presence,267.93,24618600,0.0086,0.0044,0.692,0.068,0.514,0.475,positive,0.577,0.0056,-0.0065,0.013,0.0143,1.0,0.577,msft_10year
+MSFT,2021-08-14,2.01,Partnership agreement with industry leader,284.52,22507600,0.0071,0.0029,0.459,0.193,0.389,0.647,negative,0.532,0.0184,0.0174,0.0361,0.0193,0.0,0.532,msft_10year
+MSFT,2021-09-09,8.01,Partnership agreement with industry leader,286.14,19633400,0.0096,-0.0015,0.684,0.192,0.309,0.657,positive,0.528,-0.0138,-0.004,0.0141,0.013,1.0,0.528,msft_10year
+MSFT,2021-10-14,7.01,Market expansion into new geographic region,294.36,25384800,0.0155,0.0081,0.419,0.199,0.766,0.722,positive,0.619,0.0151,0.021,0.0163,0.0662,1.0,0.619,msft_10year
+MSFT,2021-11-04,5.02,Market expansion into new geographic region,325.18,22570100,0.0118,0.0098,0.502,0.053,0.281,0.706,negative,0.545,-0.0127,0.014,0.002,0.0174,0.0,0.545,msft_10year
+MSFT,2021-11-26,8.01,Material agreement termination notice,319.59,24217200,0.0104,-0.0021,0.429,0.201,0.235,0.315,negative,0.671,-0.0191,-0.012,-0.0202,0.0104,1.0,0.671,msft_10year
+MSFT,2021-12-31,1.01,Partnership agreement with industry leader,326.03,18000800,0.0179,0.0043,0.717,0.272,0.829,0.554,positive,0.729,-0.0228,-0.03,-0.0662,-0.0937,0.0,0.729,msft_10year
+MSFT,2022-01-27,5.02,Cost reduction initiative and restructuring plan,290.66,53481300,0.0178,-0.0017,0.419,0.184,0.857,0.343,positive,0.579,0.0054,0.023,0.0047,0.0379,1.0,0.579,msft_10year
+MSFT,2022-02-28,2.02,Product launch announcement for new software platform,290.24,34627500,0.0218,0.0019,0.663,0.288,0.802,0.584,positive,0.703,-0.007,-0.0282,-0.0665,-0.0627,0.0,0.703,msft_10year
+MSFT,2022-04-05,2.02,Partnership agreement with industry leader,290.93,40110400,0.0188,-0.0015,0.477,0.489,0.598,0.594,positive,0.549,0.0126,-0.0176,-0.0397,-0.0439,0.0,0.549,msft_10year
+MSFT,2022-05-08,5.02,Partnership agreement with industry leader,257.01,47726000,0.0281,-0.0018,0.105,0.522,0.775,0.268,negative,0.595,-0.019,-0.0405,-0.0116,-0.0432,1.0,0.595,msft_10year
+MSFT,2022-06-11,2.02,Quarterly earnings results announcement with revenue and profit details,235.88,46135800,0.022,-0.0125,0.533,0.379,0.632,0.517,positive,0.569,0.0082,0.0501,0.0474,0.0934,1.0,0.569,msft_10year
+MSFT,2022-07-15,8.01,Regulatory compliance update and filing,249.96,29774100,0.0193,-0.0011,0.473,0.37,0.688,0.462,positive,0.557,0.0064,0.0456,0.0142,0.0767,1.0,0.557,msft_10year
+MSFT,2022-08-04,8.01,Major contract award from enterprise customer,275.46,16774600,0.0231,0.0103,0.542,0.472,0.625,0.493,positive,0.565,0.0322,0.0104,0.0318,0.0278,1.0,0.565,msft_10year
+MSFT,2022-09-01,2.02,Partnership agreement with industry leader,249.84,22855400,0.0143,-0.0089,0.452,0.405,0.302,0.486,negative,0.601,0.0258,-0.04,0.0414,-0.0442,0.0,0.601,msft_10year
+MSFT,2022-09-28,8.01,Financial guidance update for upcoming quarter,231.74,27484200,0.0176,-0.0033,0.455,0.422,0.648,0.51,positive,0.543,0.0191,-0.0304,0.0391,-0.0495,1.0,0.543,msft_10year
+MSFT,2022-11-01,2.02,Cybersecurity incident disclosure and response,214.76,38407000,0.0303,-0.0072,0.373,0.683,0.975,0.579,positive,0.655,-0.0064,0.0447,0.02,0.0994,1.0,0.655,msft_10year
+MSFT,2022-12-06,2.02,Market expansion into new geographic region,239.84,22463700,0.0262,0.0003,0.433,0.502,0.58,0.534,positive,0.512,0.022,-0.0483,0.0481,-0.0191,1.0,0.512,msft_10year
+MSFT,2022-12-31,8.01,Cybersecurity incident disclosure and response,234.66,21938500,0.0168,-0.0021,0.693,0.289,0.519,0.598,positive,0.604,0.0158,0.0286,-0.053,-0.0025,0.0,0.604,msft_10year
+MSFT,2023-01-31,2.01,Executive leadership change with new CEO appointment,242.48,26541100,0.0205,0.0057,0.676,0.332,0.568,0.526,positive,0.603,0.0305,0.0495,0.0797,0.0949,1.0,0.603,msft_10year
+MSFT,2023-02-28,5.02,Dividend increase and share buyback program announcement,244.66,22491000,0.0213,-0.0093,0.596,0.562,0.567,0.813,positive,0.628,0.0105,0.0343,0.019,0.018,1.0,0.628,msft_10year
+MSFT,2023-04-08,2.02,Executive leadership change with new CEO appointment,283.87,23103000,0.0164,0.0052,0.33,0.217,0.916,0.549,positive,0.608,-0.0103,-0.0187,-0.002,-0.0125,0.0,0.608,msft_10year
+MSFT,2023-04-28,2.02,Partnership agreement with industry leader,301.4,36469600,0.0219,0.0073,0.378,0.318,0.517,0.774,positive,0.513,0.0169,0.0213,0.011,0.0093,1.0,0.513,msft_10year
+MSFT,2023-06-02,2.02,Major contract award from enterprise customer,329.72,25873800,0.0132,0.0059,0.538,0.054,0.373,0.708,positive,0.506,-0.0265,-0.016,-0.0257,0.0379,0.0,0.506,msft_10year
+MSFT,2023-06-26,7.01,Executive leadership change with new CEO appointment,328.91,24354100,0.0156,0.0003,0.368,0.376,0.695,0.425,positive,0.51,-0.005,-0.0224,0.0107,-0.0063,1.0,0.51,msft_10year
+MSFT,2023-07-23,2.03,Research and development milestone achievement,339.27,26678100,0.0152,0.0043,0.573,0.258,0.585,0.548,positive,0.573,-0.0197,-0.0338,-0.0266,-0.0502,0.0,0.573,msft_10year
+MSFT,2023-08-30,8.01,Dividend increase and share buyback program announcement,322.89,26411000,0.0101,0.004,0.368,0.203,0.581,0.743,positive,0.528,0.0173,0.0163,0.0199,0.0334,1.0,0.528,msft_10year
+MSFT,2023-09-23,2.02,Partnership agreement with industry leader,312.83,17836000,0.0119,-0.0048,0.489,0.297,0.307,0.409,negative,0.6,0.0135,0.0006,0.0134,0.0306,0.0,0.6,msft_10year
+MSFT,2023-10-26,2.02,Strategic acquisition of technology company to expand market presence,324.91,29856500,0.0165,-0.0008,0.436,0.207,0.765,0.543,positive,0.589,0.0313,0.0166,0.0697,0.0936,1.0,0.589,msft_10year
+MSFT,2023-11-17,8.01,Strategic acquisition of technology company to expand market presence,365.1,40157000,0.0156,0.0044,0.588,0.343,0.505,0.7,positive,0.577,0.0304,0.0011,0.0237,0.0126,1.0,0.577,msft_10year
+MSFT,2023-12-15,8.01,Executive leadership change with new CEO appointment,365.97,78502300,0.0119,0.0005,0.471,0.013,0.68,0.348,positive,0.53,-0.0106,0.0023,0.0104,0.0143,1.0,0.53,msft_10year
