@@ -16,7 +16,6 @@ cd sec-8k-predictor
 
 # Install dependencies
 pip install -r requirements.txt
-python -m spacy download en_core_web_sm
 
 # Set API key
 export OPENAI_API_KEY="your-openai-api-key"
@@ -31,7 +30,7 @@ python cli.py quickstart --sample-size 5
 ### 3. Launch Web Interface
 ```bash
 # Start Streamlit application
-streamlit run app.py
+streamlit run Home.py
 ```
 
 ## 📊 Production Deployment

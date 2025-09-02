@@ -74,12 +74,11 @@ export OPENAI_API_KEY="your-openai-api-key"
 git clone https://github.com/kaljuvee/sec-8k-predictor.git
 cd sec-8k-predictor
 pip install -r requirements.txt
-python -m spacy download en_core_web_sm
 ```
 
 ### 2. Launch Application
 ```bash
-streamlit run app.py
+streamlit run Home.py
 ```
 
 ### 3. Setup Databases (In-App)
