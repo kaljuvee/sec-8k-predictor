@@ -1,0 +1,95 @@
+flowchart TD
+    %% Input Data
+    START([Start: Data Collection])
+    
+    %% SEC Data Pipeline
+    SEC_FETCH[Fetch SEC 8-K Filings<br/>from EDGAR]
+    SEC_PARSE[Parse Filing Content<br/>Extract Categories]
+    SEC_STORE[Store in SEC DB<br/>255 filings collected]
+    
+    %% Stock Data Pipeline
+    STOCK_FETCH[Fetch Stock Prices<br/>from Yahoo Finance]
+    STOCK_CALC[Calculate Returns<br/>5-day & 9-day periods]
+    STOCK_STORE[Store in Stock DB<br/>2,004 price records]
+    
+    %% Feature Engineering
+    FEATURE_START[Feature Extraction<br/>Process: 6 filings]
+    LLM_ANALYSIS[LLM Analysis<br/>Sentiment, Urgency,<br/>Financial Impact,<br/>Market Relevance]
+    TFIDF_EXTRACT[TF-IDF Vectorization<br/>1000 text features]
+    TARGET_ALIGN[Align with Stock Returns<br/>Match dates & tickers]
+    FEATURE_STORE[Store in Features DB<br/>6 complete records]
+    
+    %% Model Training
+    MODEL_PREP[Prepare Training Data<br/>Combine LLM + TF-IDF features]
+    MODEL_SPLIT[Train/Test Split<br/>80/20 split]
+    MODEL_TRAIN[Train ML Models<br/>Random Forest<br/>Classifier & Regressor]
+    MODEL_EVAL[Evaluate Performance<br/>Accuracy, R², Correlation]
+    MODEL_SAVE[Save Trained Models<br/>*.joblib files]
+    
+    %% Prediction Pipeline
+    NEW_FILING[New 8-K Filing]
+    EXTRACT_FEAT[Extract Features<br/>LLM + TF-IDF]
+    LOAD_MODEL[Load Trained Model<br/>Category-specific]
+    PREDICT[Make Prediction<br/>Expected Return]
+    
+    %% User Interfaces
+    CLI_ACCESS[CLI Interface<br/>Command-line access]
+    WEB_ACCESS[Web Interface<br/>Streamlit dashboard]
+    
+    %% Flow Connections
+    START --> SEC_FETCH
+    START --> STOCK_FETCH
+    
+    SEC_FETCH --> SEC_PARSE
+    SEC_PARSE --> SEC_STORE
+    
+    STOCK_FETCH --> STOCK_CALC
+    STOCK_CALC --> STOCK_STORE
+    
+    SEC_STORE --> FEATURE_START
+    STOCK_STORE --> FEATURE_START
+    
+    FEATURE_START --> LLM_ANALYSIS
+    LLM_ANALYSIS --> TFIDF_EXTRACT
+    TFIDF_EXTRACT --> TARGET_ALIGN
+    TARGET_ALIGN --> FEATURE_STORE
+    
+    FEATURE_STORE --> MODEL_PREP
+    MODEL_PREP --> MODEL_SPLIT
+    MODEL_SPLIT --> MODEL_TRAIN
+    MODEL_TRAIN --> MODEL_EVAL
+    MODEL_EVAL --> MODEL_SAVE
+    
+    %% Prediction Flow
+    NEW_FILING --> EXTRACT_FEAT
+    EXTRACT_FEAT --> LOAD_MODEL
+    MODEL_SAVE --> LOAD_MODEL
+    LOAD_MODEL --> PREDICT
+    
+    %% Interface Access
+    SEC_STORE --> CLI_ACCESS
+    STOCK_STORE --> CLI_ACCESS
+    FEATURE_STORE --> CLI_ACCESS
+    MODEL_SAVE --> CLI_ACCESS
+    
+    SEC_STORE --> WEB_ACCESS
+    STOCK_STORE --> WEB_ACCESS
+    FEATURE_STORE --> WEB_ACCESS
+    MODEL_SAVE --> WEB_ACCESS
+    PREDICT --> WEB_ACCESS
+    
+    %% Styling
+    classDef input fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef storage fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    classDef model fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef interface fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    classDef prediction fill:#e0f2f1,stroke:#00695c,stroke-width:2px
+    
+    class START,SEC_FETCH,STOCK_FETCH,NEW_FILING input
+    class SEC_PARSE,STOCK_CALC,LLM_ANALYSIS,TFIDF_EXTRACT,TARGET_ALIGN,EXTRACT_FEAT process
+    class SEC_STORE,STOCK_STORE,FEATURE_STORE storage
+    class MODEL_PREP,MODEL_SPLIT,MODEL_TRAIN,MODEL_EVAL,MODEL_SAVE,LOAD_MODEL model
+    class CLI_ACCESS,WEB_ACCESS interface
+    class FEATURE_START,PREDICT prediction
+

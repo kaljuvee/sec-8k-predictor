@@ -1,0 +1,77 @@
+graph TB
+    %% Data Sources
+    EDGAR[SEC EDGAR Database]
+    YAHOO[Yahoo Finance API]
+    OPENAI[OpenAI API]
+    
+    %% Data Collection Layer
+    SEC_DL[SEC Downloader<br/>sec_downloader.py]
+    STOCK_DL[Stock Data Collector<br/>stock_data.py]
+    
+    %% Data Storage Layer
+    SEC_DB[(SEC Filings DB<br/>sec_filings.db)]
+    STOCK_DB[(Stock Data DB<br/>stock_data.db)]
+    FEATURES_DB[(Features DB<br/>features.db)]
+    
+    %% Processing Layer
+    FEATURE_EXT[Feature Extractor<br/>feature_extraction.py]
+    ML_MODELS[ML Models<br/>models.py]
+    
+    %% Model Storage
+    MODEL_FILES[Trained Models<br/>*.joblib files]
+    
+    %% Interface Layer
+    CLI[CLI Interface<br/>cli.py]
+    STREAMLIT[Streamlit Web App<br/>app.py]
+    
+    %% Web Pages
+    DATA_PAGE[Data Overview Page]
+    FEATURE_PAGE[Feature Analysis Page]
+    MODEL_PAGE[Model Performance Page]
+    PRED_PAGE[Predictions Page]
+    
+    %% Data Flow
+    EDGAR --> SEC_DL
+    YAHOO --> STOCK_DL
+    
+    SEC_DL --> SEC_DB
+    STOCK_DL --> STOCK_DB
+    
+    SEC_DB --> FEATURE_EXT
+    STOCK_DB --> FEATURE_EXT
+    OPENAI --> FEATURE_EXT
+    
+    FEATURE_EXT --> FEATURES_DB
+    
+    FEATURES_DB --> ML_MODELS
+    ML_MODELS --> MODEL_FILES
+    
+    %% Interface Connections
+    SEC_DB --> CLI
+    STOCK_DB --> CLI
+    FEATURES_DB --> CLI
+    MODEL_FILES --> CLI
+    
+    SEC_DB --> STREAMLIT
+    STOCK_DB --> STREAMLIT
+    FEATURES_DB --> STREAMLIT
+    MODEL_FILES --> STREAMLIT
+    
+    STREAMLIT --> DATA_PAGE
+    STREAMLIT --> FEATURE_PAGE
+    STREAMLIT --> MODEL_PAGE
+    STREAMLIT --> PRED_PAGE
+    
+    %% Styling
+    classDef dataSource fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef processor fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef storage fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef interface fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef page fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    
+    class EDGAR,YAHOO,OPENAI dataSource
+    class SEC_DL,STOCK_DL,FEATURE_EXT,ML_MODELS processor
+    class SEC_DB,STOCK_DB,FEATURES_DB,MODEL_FILES storage
+    class CLI,STREAMLIT interface
+    class DATA_PAGE,FEATURE_PAGE,MODEL_PAGE,PRED_PAGE page
+

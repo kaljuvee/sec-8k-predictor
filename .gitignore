@@ -1,0 +1,46 @@
+# Database files
+data/*.db
+data/*.db-wal
+data/*.db-shm
+
+# SEC filing data
+data/filings/
+src/data/
+
+# Model files
+data/models/
+*.joblib
+
+# Cache and temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Environment files
+.env
+.venv/
+venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Test coverage
+.coverage
+htmlcov/
