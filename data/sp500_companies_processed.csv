@@ -1,0 +1,52 @@
+Symbol,Security,GICS_Sector
+AAPL,Apple Inc.,Information Technology
+MSFT,Microsoft Corporation,Information Technology
+GOOGL,Alphabet Inc.,Communication Services
+AMZN,Amazon.com Inc.,Consumer Discretionary
+TSLA,Tesla Inc.,Consumer Discretionary
+META,Meta Platforms Inc.,Communication Services
+NVDA,NVIDIA Corporation,Information Technology
+JPM,JPMorgan Chase & Co.,Financials
+JNJ,Johnson & Johnson,Health Care
+V,Visa Inc.,Information Technology
+PG,Procter & Gamble Co.,Consumer Staples
+UNH,UnitedHealth Group Inc.,Health Care
+HD,Home Depot Inc.,Consumer Discretionary
+MA,Mastercard Inc.,Information Technology
+BAC,Bank of America Corp.,Financials
+XOM,Exxon Mobil Corporation,Energy
+PFE,Pfizer Inc.,Health Care
+KO,Coca-Cola Co.,Consumer Staples
+ABBV,AbbVie Inc.,Health Care
+CVX,Chevron Corporation,Energy
+LLY,Eli Lilly and Co.,Health Care
+AVGO,Broadcom Inc.,Information Technology
+PEP,PepsiCo Inc.,Consumer Staples
+TMO,Thermo Fisher Scientific Inc.,Health Care
+COST,Costco Wholesale Corp.,Consumer Staples
+WMT,Walmart Inc.,Consumer Staples
+ABT,Abbott Laboratories,Health Care
+MRK,Merck & Co. Inc.,Health Care
+CRM,Salesforce Inc.,Information Technology
+ACN,Accenture plc,Information Technology
+NFLX,Netflix Inc.,Communication Services
+ADBE,Adobe Inc.,Information Technology
+TXN,Texas Instruments Inc.,Information Technology
+NKE,Nike Inc.,Consumer Discretionary
+LIN,Linde plc,Materials
+DHR,Danaher Corporation,Health Care
+ORCL,Oracle Corporation,Information Technology
+WFC,Wells Fargo & Co.,Financials
+VZ,Verizon Communications Inc.,Communication Services
+CMCSA,Comcast Corporation,Communication Services
+PM,Philip Morris International Inc.,Consumer Staples
+NEE,NextEra Energy Inc.,Utilities
+RTX,Raytheon Technologies Corp.,Industrials
+UNP,Union Pacific Corporation,Industrials
+T,AT&T Inc.,Communication Services
+LOW,Lowe's Companies Inc.,Consumer Discretionary
+QCOM,Qualcomm Inc.,Information Technology
+HON,Honeywell International Inc.,Industrials
+INTU,Intuit Inc.,Information Technology
+UPS,United Parcel Service Inc.,Industrials
+IBM,International Business Machines Corp.,Information Technology
