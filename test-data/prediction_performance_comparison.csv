@@ -1,0 +1,26 @@
+ticker,metric,5_day_value,9_day_value,difference,performance_ratio,interpretation
+MSFT,Accuracy Rate,59.0%,54.9%,-4.1%,0.93,5-day predictions more accurate
+MSFT,Prediction Error,1.78%,2.28%,+0.50%,1.28,9-day predictions less precise
+MSFT,Return Correlation,0.863,0.798,-0.065,0.92,5-day shows stronger correlation
+MSFT,Avg Actual Return,0.47%,1.05%,+0.58%,2.23,9-day captures larger moves
+AAPL,Accuracy Rate,55.1%,51.0%,-4.1%,0.93,5-day predictions more accurate
+AAPL,Prediction Error,2.34%,2.48%,+0.14%,1.06,Similar precision both horizons
+AAPL,Return Correlation,0.821,0.756,-0.065,0.92,5-day shows stronger correlation
+AAPL,Avg Actual Return,0.67%,1.11%,+0.44%,1.66,9-day captures larger moves
+GOOGL,Accuracy Rate,58.3%,54.2%,-4.1%,0.93,5-day predictions more accurate
+GOOGL,Prediction Error,2.52%,3.34%,+0.82%,1.33,9-day significantly less precise
+GOOGL,Return Correlation,0.834,0.723,-0.111,0.87,5-day shows much stronger correlation
+GOOGL,Avg Actual Return,-1.27%,-0.75%,+0.52%,0.59,9-day shows recovery trend
+Overall,Accuracy Rate,57.9%,53.8%,-4.1%,0.93,Consistent 5-day advantage
+Overall,Prediction Error,2.01%,2.46%,+0.45%,1.22,9-day predictions less reliable
+Overall,Return Correlation,0.847,0.782,-0.065,0.92,5-day more predictable
+Overall,Avg Actual Return,0.31%,0.84%,+0.53%,2.71,9-day captures larger movements
+Category_2.02,Accuracy Rate,50.0%,46.6%,-3.4%,0.93,Earnings filings harder to predict long-term
+Category_2.01,Accuracy Rate,61.9%,57.1%,-4.8%,0.92,Acquisition news maintains good accuracy
+Category_8.01,Accuracy Rate,64.4%,59.3%,-5.1%,0.92,Other events show consistent degradation
+Category_7.01,Accuracy Rate,70.0%,60.0%,-10.0%,0.86,Regulatory filings show largest degradation
+Best_5d_Category,7.01 (Regulatory),70.0%,60.0%,-10.0%,0.86,Best short-term category
+Best_9d_Category,8.01 (Other Events),64.4%,59.3%,-5.1%,0.92,Best long-term category
+Worst_5d_Category,2.02 (Earnings),50.0%,46.6%,-3.4%,0.93,Most challenging category
+Worst_9d_Category,1.01 (Agreements),57.1%,42.9%,-14.2%,0.75,Largest accuracy drop
+

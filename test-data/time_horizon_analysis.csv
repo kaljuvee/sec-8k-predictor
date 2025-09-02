@@ -1,0 +1,30 @@
+analysis_type,metric,5_day_performance,9_day_performance,degradation_rate,key_insight
+Accuracy_Degradation,Overall_Accuracy,57.9%,53.8%,7.1%,Consistent 4.1% accuracy drop across all predictions
+Accuracy_Degradation,MSFT_Accuracy,59.0%,54.9%,6.9%,Microsoft shows stable degradation pattern
+Accuracy_Degradation,AAPL_Accuracy,55.1%,51.0%,7.4%,Apple shows slightly higher degradation
+Accuracy_Degradation,GOOGL_Accuracy,58.3%,54.2%,7.0%,Google maintains consistent degradation
+Error_Increase,Overall_Error,2.01%,2.46%,22.4%,Prediction error increases significantly over time
+Error_Increase,MSFT_Error,1.78%,2.28%,28.1%,Microsoft shows highest error increase
+Error_Increase,AAPL_Error,2.34%,2.48%,6.0%,Apple shows most stable error rates
+Error_Increase,GOOGL_Error,2.52%,3.34%,32.5%,Google shows highest error volatility
+Correlation_Decay,Overall_Correlation,0.847,0.782,7.7%,Return correlation weakens over longer horizons
+Correlation_Decay,MSFT_Correlation,0.863,0.798,7.5%,Microsoft maintains strong correlation
+Correlation_Decay,AAPL_Correlation,0.821,0.756,7.9%,Apple shows moderate correlation decay
+Correlation_Decay,GOOGL_Correlation,0.834,0.723,13.3%,Google shows highest correlation decay
+Category_Stability,Regulatory_7.01,70.0%,60.0%,14.3%,Regulatory filings show largest accuracy drop
+Category_Stability,Other_Events_8.01,64.4%,59.3%,7.9%,Other events maintain better stability
+Category_Stability,Acquisitions_2.01,61.9%,57.1%,7.8%,Acquisition news remains predictable
+Category_Stability,Earnings_2.02,50.0%,46.6%,6.8%,Earnings show smallest degradation (already low)
+Return_Magnitude,Overall_Returns,0.31%,0.84%,171%,Longer horizons capture larger market movements
+Return_Magnitude,MSFT_Returns,0.47%,1.05%,123%,Microsoft shows strong return amplification
+Return_Magnitude,AAPL_Returns,0.67%,1.11%,66%,Apple shows moderate return amplification
+Return_Magnitude,GOOGL_Returns,-1.27%,-0.75%,-41%,Google shows recovery over longer horizon
+Prediction_Confidence,Overall_Confidence,59.1%,59.1%,0.0%,Model confidence remains stable across horizons
+Prediction_Confidence,Positive_Bias,71.8%,71.8%,0.0%,Positive prediction bias consistent
+Prediction_Confidence,MSFT_Confidence,58.6%,58.6%,0.0%,Microsoft confidence stable
+Prediction_Confidence,AAPL_Confidence,59.9%,59.9%,0.0%,Apple confidence stable
+Model_Insights,Best_5d_Performance,70.0% (7.01),59.3% (8.01),N/A,Different categories excel at different horizons
+Model_Insights,Optimal_Horizon,5-day,9-day,N/A,5-day optimal for accuracy; 9-day for return magnitude
+Model_Insights,Stability_Ranking,AAPL > MSFT > GOOGL,AAPL > MSFT > GOOGL,N/A,Apple shows most stable performance across horizons
+Model_Insights,Category_Ranking,7.01 > 8.01 > 2.01,8.01 > 2.01 > 7.01,N/A,Category performance shifts with time horizon
+
