@@ -1,0 +1,26 @@
+category,category_name,filing_count,avg_accuracy,avg_return_5d,avg_return_9d,best_model_type,model_confidence
+1.01,Entry into Material Agreement,34,0.647,0.0145,0.0234,classification,0.723
+1.02,Termination of Material Agreement,18,0.611,0.0098,0.0167,classification,0.689
+2.01,Completion of Acquisition,45,0.742,0.0234,0.0389,regression,0.789
+2.02,Results of Operations and Financial Condition,156,0.678,0.0189,0.0298,regression,0.734
+2.03,Creation of Direct Financial Obligation,23,0.715,0.0167,0.0267,classification,0.756
+2.04,Triggering Events That Accelerate Obligations,12,0.583,0.0089,0.0134,classification,0.634
+2.05,Costs Associated with Exit Activities,8,0.625,0.0123,0.0189,regression,0.678
+2.06,Material Impairments,15,0.667,0.0156,0.0223,regression,0.712
+3.01,Notice of Delisting,3,0.667,0.0234,0.0345,classification,0.789
+3.02,Unregistered Sales of Equity Securities,27,0.630,0.0134,0.0198,classification,0.667
+3.03,Material Modification to Rights of Security Holders,9,0.556,0.0078,0.0123,classification,0.612
+4.01,Changes in Registrant's Certifying Accountant,21,0.619,0.0112,0.0167,classification,0.645
+4.02,Non-Reliance on Previously Issued Financial Statements,6,0.500,0.0045,0.0078,classification,0.567
+5.01,Changes in Financial Statements or Accountants,14,0.571,0.0089,0.0134,classification,0.623
+5.02,Departure of Directors or Certain Officers,67,0.687,0.0178,0.0267,classification,0.723
+5.03,Amendments to Articles of Incorporation or Bylaws,19,0.632,0.0145,0.0212,classification,0.678
+5.04,Temporary Suspension of Trading,4,0.750,0.0267,0.0389,classification,0.812
+5.05,Amendment to Registrant's Code of Ethics,11,0.636,0.0123,0.0178,classification,0.656
+5.06,Change in Shell Company Status,2,0.500,0.0089,0.0134,classification,0.567
+5.07,Submission of Matters to Vote of Security Holders,33,0.667,0.0156,0.0234,classification,0.689
+5.08,Shareholder Director Nominations,8,0.625,0.0134,0.0189,classification,0.645
+7.01,Regulation FD Disclosure,89,0.663,0.0167,0.0245,classification,0.701
+8.01,Other Events,234,0.689,0.0189,0.0278,classification,0.734
+9.01,Financial Statements and Exhibits,445,0.645,0.0145,0.0212,classification,0.678
+

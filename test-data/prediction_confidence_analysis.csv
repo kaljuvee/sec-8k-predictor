@@ -1,0 +1,7 @@
+confidence_bucket,prediction_count,accuracy_rate,avg_return_5d,avg_return_9d,success_rate,avg_confidence_score
+very_high,23,0.826,0.0234,0.0389,0.783,0.912
+high,67,0.746,0.0189,0.0298,0.701,0.789
+medium,134,0.642,0.0123,0.0167,0.634,0.623
+low,89,0.539,0.0067,0.0089,0.517,0.456
+very_low,45,0.422,0.0012,0.0023,0.400,0.298
+
