@@ -15,15 +15,19 @@ import threading
 from datetime import datetime, timedelta
 
 # Add src directory to path
-sys.path.append(str(Path(__file__).parent.parent / "src"))
+current_dir = Path(__file__).parent.parent
+src_dir = current_dir / "src"
+if src_dir.exists():
+    sys.path.insert(0, str(src_dir))
 
 try:
-    from src.sec_downloader import SEC8KDownloader
-    from src.stock_data import StockDataCollector
-    from src.feature_extraction import FeatureExtractor
-    from src.models import SEC8KPredictor
+    from sec_downloader import SEC8KDownloader
+    from stock_data import StockDataCollector
+    from feature_extraction import FeatureExtractor
+    from models import SEC8KPredictor
 except ImportError as e:
     st.error(f"Error importing modules: {e}")
+    st.info("Please ensure all required packages are installed: pip install -r requirements.txt")
     st.stop()
 
 st.set_page_config(
