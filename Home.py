@@ -7,11 +7,10 @@ Main application file for the Streamlit web interface.
 import streamlit as st
 import sys
 from pathlib import Path
+import sqlite3
+import os
 
-# Add src directory to path
-sys.path.append(str(Path(__file__).parent / "src"))
-
-# Configure page
+# Configure page first (must be first Streamlit command)
 st.set_page_config(
     page_title="SEC 8-K Predictor",
     page_icon="📈",
@@ -19,114 +18,151 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Add src directory to path
+current_dir = Path(__file__).parent
+src_dir = current_dir / "src"
+if src_dir.exists():
+    sys.path.insert(0, str(src_dir))
+
 # Main page content
 st.title("📈 SEC 8-K Predictor")
 st.markdown("### Predict Stock Returns from SEC 8-K Filings")
 
 # Check if databases exist
-import sqlite3
-from pathlib import Path
-
 data_dir = Path("data")
-databases_exist = (
-    (data_dir / "sec_filings.db").exists() and
-    (data_dir / "stock_data.db").exists()
-)
+filings_db = data_dir / "filings.db"
+stock_db = data_dir / "stock_data.db"
+features_db = data_dir / "features.db"
 
-if not databases_exist:
-    st.warning("""
-    🚀 **Welcome to SEC 8-K Predictor!** 
-    
-    To get started, please set up your databases first by visiting the **🚀 Setup Database** page in the sidebar.
-    
-    This will download SEC filings and stock data to populate your local databases.
-    """)
-    
-    if st.button("🚀 Go to Database Setup", type="primary"):
-        st.switch_page("pages/0_🚀_Setup_Database.py")
-else:
-    st.success("✅ Databases are ready! Explore the application using the sidebar navigation.")
+# Database status
+col1, col2, col3 = st.columns(3)
 
-st.markdown("""
-Welcome to the SEC 8-K Predictor! This application uses machine learning to predict stock returns 
-based on SEC 8-K filing content and market data.
+with col1:
+    if filings_db.exists():
+        st.success("✅ SEC Filings Database")
+        try:
+            conn = sqlite3.connect(filings_db)
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM filings")
+            count = cursor.fetchone()[0]
+            st.metric("SEC Filings", f"{count:,}")
+            conn.close()
+        except Exception as e:
+            st.error(f"Database error: {e}")
+    else:
+        st.warning("⚠️ SEC Filings Database Missing")
+        st.info("Use the Setup Database page to download SEC filings")
 
-**Features:**
-- 🚀 **Setup Database**: Download and populate databases with fresh data
-- 📊 **Data Overview**: Explore SEC filings and stock data
-- 🔍 **Feature Analysis**: Analyze extracted features from filings
-- 🤖 **Model Performance**: View machine learning model results
-- 🎯 **Predictions**: Make predictions on new filings
-- 📈 **Visualizations**: Interactive charts and graphs
+with col2:
+    if stock_db.exists():
+        st.success("✅ Stock Data Database")
+        try:
+            conn = sqlite3.connect(stock_db)
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM stock_data")
+            count = cursor.fetchone()[0]
+            st.metric("Stock Records", f"{count:,}")
+            conn.close()
+        except Exception as e:
+            st.error(f"Database error: {e}")
+    else:
+        st.warning("⚠️ Stock Data Database Missing")
+        st.info("Use the Setup Database page to download stock data")
 
-**Navigation:**
-Use the sidebar to navigate between different pages of the application.
-""")
+with col3:
+    if features_db.exists():
+        st.success("✅ Features Database")
+        try:
+            conn = sqlite3.connect(features_db)
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM features")
+            count = cursor.fetchone()[0]
+            st.metric("Feature Records", f"{count:,}")
+            conn.close()
+        except Exception as e:
+            st.error(f"Database error: {e}")
+    else:
+        st.warning("⚠️ Features Database Missing")
+        st.info("Use the Setup Database page to extract features")
 
-# Sidebar navigation
-st.sidebar.title("Navigation")
-st.sidebar.markdown("Select a page to explore different features of the SEC 8-K Predictor.")
-
-# Data status in sidebar
-st.sidebar.markdown("---")
-st.sidebar.markdown("### Data Status")
-
-try:
-    from src.sec_downloader import SEC8KDownloader
-    from src.stock_data import StockDataCollector
-    from src.feature_extraction import FeatureExtractor
-    from src.models import SEC8KPredictor
-    
-    data_dir = "data"
-    
-    # Check data availability
-    filings_db = Path(data_dir) / "sec_filings.db"
-    stock_db = Path(data_dir) / "stock_data.db"
-    features_db = Path(data_dir) / "features.db"
-    models_dir = Path(data_dir) / "models"
-    
-    st.sidebar.markdown(f"**SEC Filings:** {'✅' if filings_db.exists() else '❌'}")
-    st.sidebar.markdown(f"**Stock Data:** {'✅' if stock_db.exists() else '❌'}")
-    st.sidebar.markdown(f"**Features:** {'✅' if features_db.exists() else '❌'}")
-    st.sidebar.markdown(f"**Models:** {'✅' if models_dir.exists() and list(models_dir.glob('*.joblib')) else '❌'}")
-    
-except Exception as e:
-    st.sidebar.error(f"Error checking data status: {e}")
-
-# Quick actions
-st.sidebar.markdown("---")
-st.sidebar.markdown("### Quick Actions")
-
-if st.sidebar.button("🔄 Refresh Data Status"):
-    st.rerun()
-
-# Instructions
+# System overview
 st.markdown("---")
-st.markdown("### Getting Started")
+st.markdown("## 🎯 System Overview")
 
 col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("""
-    **1. Data Collection**
-    - Download SEC 8-K filings
-    - Collect stock price data
-    - Extract features from filings
+    ### 📊 Features
+    - **SEC 8-K Filing Analysis**: Automated download and processing
+    - **Stock Data Integration**: Real-time price and volume data
+    - **Feature Extraction**: LLM-based content analysis
+    - **Machine Learning Models**: Random Forest classifiers and regressors
+    - **Prediction Interface**: Interactive prediction tools
+    - **Backtesting Framework**: Historical performance analysis
     """)
 
 with col2:
     st.markdown("""
-    **2. Model Training**
-    - Train machine learning models
-    - Evaluate model performance
-    - Make predictions
+    ### 🚀 Getting Started
+    1. **Setup Database**: Download SEC filings and stock data
+    2. **Extract Features**: Process filings with LLM analysis
+    3. **Train Models**: Build prediction models
+    4. **Make Predictions**: Predict stock returns from new filings
+    5. **Analyze Performance**: Review model accuracy and insights
     """)
+
+# Quick actions
+st.markdown("---")
+st.markdown("## ⚡ Quick Actions")
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    if st.button("🚀 Setup Database", use_container_width=True):
+        st.switch_page("pages/0_🚀_Setup_Database.py")
+
+with col2:
+    if st.button("📊 View Data", use_container_width=True):
+        st.switch_page("pages/1_📊_Data_Overview.py")
+
+with col3:
+    if st.button("🔍 Analyze Features", use_container_width=True):
+        st.switch_page("pages/2_🔍_Feature_Analysis.py")
+
+with col4:
+    if st.button("🎯 Make Predictions", use_container_width=True):
+        st.switch_page("pages/4_🎯_Predictions.py")
+
+# Status summary
+st.markdown("---")
+st.markdown("## 📋 System Status")
+
+# Check overall system readiness
+databases_ready = all([filings_db.exists(), stock_db.exists(), features_db.exists()])
+
+if databases_ready:
+    st.success("🎉 **System Ready!** All databases are available. You can start making predictions.")
+else:
+    st.info("🔧 **Setup Required**: Please use the Setup Database page to initialize the system.")
+    
+    missing = []
+    if not filings_db.exists():
+        missing.append("SEC Filings")
+    if not stock_db.exists():
+        missing.append("Stock Data")
+    if not features_db.exists():
+        missing.append("Features")
+    
+    st.warning(f"Missing: {', '.join(missing)}")
 
 # Footer
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666;'>
-    <p>SEC 8-K Predictor | Built with Streamlit and scikit-learn</p>
+    <p>SEC 8-K Predictor | Built with Streamlit | 
+    <a href='https://github.com/kaljuvee/sec-8k-predictor' target='_blank'>GitHub Repository</a>
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
