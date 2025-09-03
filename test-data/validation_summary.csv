@@ -1,0 +1,7 @@
+category,status,total_issues,critical_issues,warnings
+forward_returns,CRITICAL,2,2,0
+prediction_accuracy,PASS,0,0,0
+temporal_consistency,CRITICAL,1,1,0
+statistical_properties,PASS,0,0,0
+lookahead_bias,WARNING,2,0,2
+suspicious_patterns,WARNING,7,0,7

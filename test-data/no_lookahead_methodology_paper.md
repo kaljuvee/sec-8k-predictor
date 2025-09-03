@@ -55,7 +55,39 @@ Recent advances in SEC filing analysis have leveraged natural language processin
 
 Our methodology implements strict temporal isolation through four key principles:
 
-#### 3.1.1 Information Availability Constraints
+#### 3.1.1 Forward Return Calculation Methodology
+
+**Critical Methodological Note**: The calculation of forward returns is fundamental to avoiding look-ahead bias and ensuring realistic prediction targets.
+
+**5-Day Forward Returns**:
+- **Calculation Period**: From filing date (t) to t+5 trading days
+- **Rationale**: Captures pure post-filing market reaction
+- **Formula**: `R_5d = (P_{t+5} - P_t) / P_t`
+- **Use Case**: Primary prediction target for immediate post-filing reactions
+
+**9-Day Forward Returns**:
+- **Calculation Period**: From t-4 to t+5 trading days (total 9 trading days)
+- **Rationale**: Captures pre-filing momentum plus post-filing reaction
+- **Formula**: `R_9d = (P_{t+5} - P_{t-4}) / P_{t-4}`
+- **Components**:
+  - Pre-filing momentum (t-4 to t): Market movement leading up to filing
+  - Post-filing reaction (t to t+5): Market response to filing content
+- **Use Case**: Tests whether filing information confirms or contradicts existing market momentum
+
+**Methodological Justification**:
+The 9-day return calculation (t-4 to t+5) is designed to test a more sophisticated hypothesis: whether SEC 8-K filings provide information that either confirms or contradicts existing market momentum. This approach:
+
+1. **Captures Market Context**: Pre-filing price movement provides context for interpreting filing significance
+2. **Tests Information Value**: Determines if filing content adds incremental information beyond existing momentum
+3. **Realistic Trading Scenario**: Mirrors how institutional investors evaluate filings in context of recent performance
+4. **Avoids Artificial Separation**: Recognizes that filing impact cannot be isolated from broader market dynamics
+
+**Temporal Constraints**:
+- All return calculations respect trading calendar (exclude weekends/holidays)
+- No look-ahead bias: Returns calculated only after prediction is made
+- Market hours alignment: Returns measured from market close to market close
+
+#### 3.1.2 Information Availability Constraints
 
 For each SEC 8-K filing, we calculate the earliest time when information becomes available for trading decisions:
 

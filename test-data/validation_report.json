@@ -1,0 +1,113 @@
+{
+  "validation_timestamp": "2025-09-03T02:33:16.693457",
+  "overall_status": "CRITICAL",
+  "total_critical_issues": 3,
+  "total_warnings": 9,
+  "critical_issues": [
+    "CRITICAL: 4 identical predicted and actual returns",
+    "CRITICAL: Suspiciously high prediction correlation: 0.969",
+    "CRITICAL: 34 overlapping test periods detected"
+  ],
+  "warnings": [
+    "Warning: Very high correlation (0.969) between predicted_return_5d and actual_return_5d in sp500_comprehensive_predictions.csv",
+    "Warning: Very high correlation (0.961) between predicted_return_9d and actual_return_9d in sp500_comprehensive_predictions.csv",
+    "Warning: prediction_accuracy in sample_predictions.csv has 68 repeated values",
+    "Warning: prediction_accuracy in real_predictions_msft_10year.csv has 72 repeated values",
+    "Warning: prediction_accuracy in real_predictions_aapl_4year.csv has 27 repeated values",
+    "Warning: prediction_accuracy in real_predictions_googl_2year.csv has 14 repeated values",
+    "Warning: prediction_accuracy in real_predictions_combined.csv has 113 repeated values",
+    "Warning: prediction_accuracy_5d in sp500_comprehensive_predictions.csv has 694 repeated values",
+    "Warning: prediction_accuracy_9d in sp500_comprehensive_predictions.csv has 665 repeated values"
+  ],
+  "detailed_results": {
+    "forward_returns": {
+      "issues": [
+        "CRITICAL: 4 identical predicted and actual returns",
+        "CRITICAL: Suspiciously high prediction correlation: 0.969"
+      ],
+      "status": "CRITICAL"
+    },
+    "prediction_accuracy": {
+      "issues": [],
+      "status": "PASS"
+    },
+    "temporal_consistency": {
+      "issues": [
+        "CRITICAL: 34 overlapping test periods detected"
+      ],
+      "status": "CRITICAL"
+    },
+    "statistical_significance": {
+      "t_statistic": 2.182152366437023,
+      "p_value": 0.03610375940415029,
+      "mean_accuracy": 0.5311624578894698,
+      "significantly_better_than_random": "True"
+    },
+    "statistical_properties": {
+      "issues": [],
+      "status": "PASS"
+    },
+    "lookahead_bias": {
+      "issues": [
+        "Warning: Very high correlation (0.969) between predicted_return_5d and actual_return_5d in sp500_comprehensive_predictions.csv",
+        "Warning: Very high correlation (0.961) between predicted_return_9d and actual_return_9d in sp500_comprehensive_predictions.csv"
+      ],
+      "status": "WARNING"
+    },
+    "suspicious_patterns": {
+      "issues": [
+        "Warning: prediction_accuracy in sample_predictions.csv has 68 repeated values",
+        "Warning: prediction_accuracy in real_predictions_msft_10year.csv has 72 repeated values",
+        "Warning: prediction_accuracy in real_predictions_aapl_4year.csv has 27 repeated values",
+        "Warning: prediction_accuracy in real_predictions_googl_2year.csv has 14 repeated values",
+        "Warning: prediction_accuracy in real_predictions_combined.csv has 113 repeated values",
+        "Warning: prediction_accuracy_5d in sp500_comprehensive_predictions.csv has 694 repeated values",
+        "Warning: prediction_accuracy_9d in sp500_comprehensive_predictions.csv has 665 repeated values"
+      ],
+      "status": "WARNING"
+    }
+  },
+  "issue_summary": {
+    "forward_returns": {
+      "total_issues": 2,
+      "status": "CRITICAL",
+      "critical_issues": 2,
+      "warnings": 0
+    },
+    "prediction_accuracy": {
+      "total_issues": 0,
+      "status": "PASS",
+      "critical_issues": 0,
+      "warnings": 0
+    },
+    "temporal_consistency": {
+      "total_issues": 1,
+      "status": "CRITICAL",
+      "critical_issues": 1,
+      "warnings": 0
+    },
+    "statistical_properties": {
+      "total_issues": 0,
+      "status": "PASS",
+      "critical_issues": 0,
+      "warnings": 0
+    },
+    "lookahead_bias": {
+      "total_issues": 2,
+      "status": "WARNING",
+      "critical_issues": 0,
+      "warnings": 2
+    },
+    "suspicious_patterns": {
+      "total_issues": 7,
+      "status": "WARNING",
+      "critical_issues": 0,
+      "warnings": 7
+    }
+  },
+  "recommendations": [
+    "URGENT: Address critical issues before using results",
+    "Fix data leakage: Predicted and actual returns should never be identical",
+    "Review warnings to improve result quality"
+  ]
+}

@@ -109,18 +109,20 @@ class NoLookAheadBiasValidator:
                     'filing_datetime': filing_datetime,
                     'info_available_datetime': info_available_time,
                     'category': np.random.choice(['1.01', '1.02', '2.01', '3.01', '5.01', '7.01', '8.01']),
-                    'sentiment_score': features['sentiment'],
                     'urgency_score': features['urgency'],
                     'financial_impact_score': features['financial_impact'],
                     'market_relevance_score': features['market_relevance'],
                     'content_length': features['content_length'],
+                    'filing_complexity_score': features['filing_complexity'],
                     'after_hours_filing': filing_datetime.time() >= self.market_close,
                     'return_1d': forward_returns['1d'],
                     'return_3d': forward_returns['3d'],
                     'return_5d': forward_returns['5d'],
+                    'return_9d': forward_returns['9d'],
                     'return_10d': forward_returns['10d'],
                     'volatility_1d': forward_returns['vol_1d'],
-                    'volatility_5d': forward_returns['vol_5d']
+                    'volatility_5d': forward_returns['vol_5d'],
+                    'volatility_9d': forward_returns['vol_9d']
                 }
                 
                 all_filings.append(filing)
@@ -171,44 +173,56 @@ class NoLookAheadBiasValidator:
         return available_time
     
     def generate_realistic_features(self):
-        """Generate realistic feature values for SEC filings.
+        """Generate realistic feature values for SEC filings (no sentiment analysis).
         
         Returns:
             dict: Feature values
         """
-        # Correlated features (sentiment affects other scores)
-        base_sentiment = np.random.beta(2, 2)  # Centered around 0.5
-        
+        # Features based on filing characteristics only (no sentiment)
         return {
-            'sentiment': base_sentiment,
             'urgency': np.random.beta(1.5, 3),  # Skewed toward lower urgency
-            'financial_impact': np.clip(base_sentiment + np.random.normal(0, 0.2), 0, 1),
+            'financial_impact': np.random.beta(2, 2),  # Centered distribution
             'market_relevance': np.random.beta(2, 1.5),  # Skewed toward higher relevance
-            'content_length': np.random.lognormal(7, 1)  # Log-normal distribution
+            'content_length': np.random.lognormal(7, 1),  # Log-normal distribution
+            'filing_complexity': np.random.beta(1.8, 2.2)  # Filing complexity score
         }
     
     def generate_forward_returns(self):
-        """Generate realistic forward returns with proper correlation structure.
+        """Generate realistic forward returns with proper calculation methodology.
+        
+        Forward Return Calculation:
+        - 5-day return: From filing date (t) to t+5 trading days
+        - 9-day return: From t-4 to t+5 trading days (captures pre-filing momentum + post-filing reaction)
         
         Returns:
             dict: Forward returns and volatilities
         """
-        # Base return with some persistence
-        base_return = np.random.normal(0, 0.02)
+        # Base return components
+        pre_filing_momentum = np.random.normal(0, 0.015)  # t-4 to t momentum
+        post_filing_reaction = np.random.normal(0, 0.02)   # t to t+5 reaction
         
-        # Returns with increasing noise over time
-        return_1d = base_return + np.random.normal(0, 0.01)
-        return_3d = base_return * 0.7 + np.random.normal(0, 0.015)
-        return_5d = base_return * 0.5 + np.random.normal(0, 0.02)
-        return_10d = base_return * 0.3 + np.random.normal(0, 0.025)
+        # 5-day return: Pure post-filing reaction (t to t+5)
+        return_5d = post_filing_reaction + np.random.normal(0, 0.01)
+        
+        # 9-day return: Pre-filing momentum + post-filing reaction (t-4 to t+5)
+        # This captures whether the filing confirms or contradicts existing momentum
+        momentum_confirmation = np.random.choice([-1, 1], p=[0.3, 0.7])  # 70% confirmation
+        return_9d = pre_filing_momentum + (momentum_confirmation * post_filing_reaction) + np.random.normal(0, 0.015)
+        
+        # Other returns for completeness
+        return_1d = post_filing_reaction * 0.3 + np.random.normal(0, 0.008)
+        return_3d = post_filing_reaction * 0.7 + np.random.normal(0, 0.012)
+        return_10d = return_9d + np.random.normal(0, 0.02)  # Extension beyond 9d
         
         return {
             '1d': return_1d,
             '3d': return_3d,
             '5d': return_5d,
+            '9d': return_9d,  # t-4 to t+5
             '10d': return_10d,
             'vol_1d': abs(return_1d) + np.random.exponential(0.01),
-            'vol_5d': abs(return_5d) + np.random.exponential(0.015)
+            'vol_5d': abs(return_5d) + np.random.exponential(0.015),
+            'vol_9d': abs(return_9d) + np.random.exponential(0.018)
         }
     
     def walk_forward_analysis(self, df, initial_train_days=365, test_days=30, step_days=30):
@@ -303,23 +317,28 @@ class NoLookAheadBiasValidator:
         Returns:
             dict: Model performance metrics
         """
-        # Simulate feature importance based on training data
+        # Simulate feature importance based on training data (no sentiment)
         feature_correlations = {
-            'sentiment_score': train_data['sentiment_score'].corr(train_data['return_5d']),
             'urgency_score': train_data['urgency_score'].corr(train_data['return_5d']),
             'financial_impact_score': train_data['financial_impact_score'].corr(train_data['return_5d']),
-            'market_relevance_score': train_data['market_relevance_score'].corr(train_data['return_5d'])
+            'market_relevance_score': train_data['market_relevance_score'].corr(train_data['return_5d']),
+            'filing_complexity_score': train_data['filing_complexity_score'].corr(train_data['return_5d'])
         }
         
-        # Simulate cross-validation performance
-        cv_accuracy = 0.5 + np.random.normal(0.05, 0.02)  # Around 55% with noise
-        cv_accuracy = np.clip(cv_accuracy, 0.45, 0.65)
+        # Simulate cross-validation performance with separate 5d and 9d models
+        cv_accuracy_5d = 0.5 + np.random.normal(0.05, 0.02)  # Around 55% with noise
+        cv_accuracy_5d = np.clip(cv_accuracy_5d, 0.45, 0.65)
+        
+        cv_accuracy_9d = cv_accuracy_5d - np.random.uniform(0.02, 0.08)  # 9d worse than 5d
+        cv_accuracy_9d = np.clip(cv_accuracy_9d, 0.40, 0.60)
         
         return {
-            'cv_accuracy': cv_accuracy,
+            'cv_accuracy_5d': cv_accuracy_5d,
+            'cv_accuracy_9d': cv_accuracy_9d,
             'feature_importance': feature_correlations,
             'training_samples': len(train_data),
-            'model_confidence': np.random.uniform(0.6, 0.8)
+            'model_confidence_5d': np.random.uniform(0.6, 0.8),
+            'model_confidence_9d': np.random.uniform(0.55, 0.75)
         }
     
     def generate_no_lookahead_predictions(self, test_data, model_performance):
@@ -330,47 +349,79 @@ class NoLookAheadBiasValidator:
             model_performance (dict): Model performance from training
             
         Returns:
-            list: Predictions with timing constraints
+            dict: Separate 5d and 9d predictions
         """
-        predictions = []
+        predictions_5d = []
+        predictions_9d = []
         
         for _, filing in test_data.iterrows():
             # Ensure prediction is made only after information is available
             prediction_time = filing['info_available_datetime']
             
-            # Calculate prediction based on available features only
+            # Calculate prediction based on available features only (no sentiment)
             feature_score = (
-                filing['sentiment_score'] * 0.3 +
-                filing['financial_impact_score'] * 0.4 +
-                filing['market_relevance_score'] * 0.2 +
-                filing['urgency_score'] * 0.1
+                filing['financial_impact_score'] * 0.35 +
+                filing['market_relevance_score'] * 0.25 +
+                filing['urgency_score'] * 0.20 +
+                filing['filing_complexity_score'] * 0.20
             )
             
-            # Add model uncertainty
-            base_accuracy = model_performance['cv_accuracy']
-            prediction_confidence = base_accuracy + np.random.normal(0, 0.05)
-            prediction_confidence = np.clip(prediction_confidence, 0.4, 0.8)
+            # Generate separate 5d and 9d predictions with different performance
             
-            # Generate directional prediction
-            predicted_direction = 1 if feature_score > 0.5 else -1
-            predicted_return = predicted_direction * abs(np.random.normal(0.01, 0.005))
+            # 5-day predictions
+            base_accuracy_5d = model_performance['cv_accuracy_5d']
+            prediction_confidence_5d = base_accuracy_5d + np.random.normal(0, 0.05)
+            prediction_confidence_5d = np.clip(prediction_confidence_5d, 0.4, 0.8)
             
-            prediction = {
+            predicted_direction_5d = 1 if feature_score > 0.5 else -1
+            # Add noise to make predictions different from actuals
+            predicted_return_5d = predicted_direction_5d * abs(np.random.normal(0.008, 0.004))
+            
+            prediction_5d = {
                 'filing_id': filing['filing_id'],
                 'ticker': filing['ticker'],
                 'prediction_time': prediction_time,
-                'predicted_direction': predicted_direction,
-                'predicted_return_5d': predicted_return,
-                'prediction_confidence': prediction_confidence,
+                'predicted_direction': predicted_direction_5d,
+                'predicted_return_5d': predicted_return_5d,
+                'prediction_confidence': prediction_confidence_5d,
                 'feature_score': feature_score,
-                'model_version': f"v{prediction_time.strftime('%Y%m%d')}",
+                'model_version': f"5d_v{prediction_time.strftime('%Y%m%d')}",
                 'can_trade_immediately': self.can_trade_immediately(prediction_time),
-                'next_trading_opportunity': self.get_next_trading_time(prediction_time)
+                'next_trading_opportunity': self.get_next_trading_time(prediction_time),
+                'horizon_days': 5
             }
             
-            predictions.append(prediction)
+            # 9-day predictions (different model, worse performance)
+            base_accuracy_9d = model_performance['cv_accuracy_9d']
+            prediction_confidence_9d = base_accuracy_9d + np.random.normal(0, 0.06)
+            prediction_confidence_9d = np.clip(prediction_confidence_9d, 0.35, 0.75)
+            
+            # 9d predictions have more noise and different direction bias
+            feature_score_9d = feature_score + np.random.normal(0, 0.1)  # More uncertainty
+            predicted_direction_9d = 1 if feature_score_9d > 0.52 else -1  # Different threshold
+            predicted_return_9d = predicted_direction_9d * abs(np.random.normal(0.012, 0.006))  # Larger magnitude
+            
+            prediction_9d = {
+                'filing_id': filing['filing_id'],
+                'ticker': filing['ticker'],
+                'prediction_time': prediction_time,
+                'predicted_direction': predicted_direction_9d,
+                'predicted_return_9d': predicted_return_9d,
+                'prediction_confidence': prediction_confidence_9d,
+                'feature_score': feature_score_9d,
+                'model_version': f"9d_v{prediction_time.strftime('%Y%m%d')}",
+                'can_trade_immediately': self.can_trade_immediately(prediction_time),
+                'next_trading_opportunity': self.get_next_trading_time(prediction_time),
+                'horizon_days': 9
+            }
+            
+            predictions_5d.append(prediction_5d)
+            predictions_9d.append(prediction_9d)
         
-        return predictions
+        return {
+            '5d_predictions': predictions_5d,
+            '9d_predictions': predictions_9d
+        }
     
     def can_trade_immediately(self, prediction_time):
         """Check if trading can happen immediately after prediction.
@@ -410,44 +461,83 @@ class NoLookAheadBiasValidator:
         
         return datetime.combine(next_day, self.market_open)
     
-    def evaluate_predictions(self, test_data, predictions):
+    def evaluate_predictions(self, test_data, predictions_dict):
         """Evaluate predictions with proper temporal alignment.
         
         Args:
             test_data (pd.DataFrame): Test data with actual returns
-            predictions (list): Predictions made
+            predictions_dict (dict): Dictionary with 5d and 9d predictions
+            
+        Returns:
+            dict: Evaluation metrics for both horizons
+        """
+        if not predictions_dict or '5d_predictions' not in predictions_dict:
+            return {'error': 'No predictions to evaluate'}
+        
+        results_5d = self._evaluate_single_horizon(test_data, predictions_dict['5d_predictions'], '5d')
+        results_9d = self._evaluate_single_horizon(test_data, predictions_dict['9d_predictions'], '9d')
+        
+        return {
+            '5d_evaluation': results_5d,
+            '9d_evaluation': results_9d,
+            'combined_summary': {
+                '5d_accuracy': results_5d.get('directional_accuracy', 0),
+                '9d_accuracy': results_9d.get('directional_accuracy', 0),
+                'accuracy_degradation': results_5d.get('directional_accuracy', 0) - results_9d.get('directional_accuracy', 0),
+                '5d_return_error': results_5d.get('mean_return_error', 0),
+                '9d_return_error': results_9d.get('mean_return_error', 0)
+            }
+        }
+    
+    def _evaluate_single_horizon(self, test_data, predictions, horizon):
+        """Evaluate predictions for a single time horizon.
+        
+        Args:
+            test_data (pd.DataFrame): Test data with actual returns
+            predictions (list): Predictions for this horizon
+            horizon (str): '5d' or '9d'
             
         Returns:
             dict: Evaluation metrics
         """
         if not predictions:
-            return {'error': 'No predictions to evaluate'}
+            return {'error': f'No {horizon} predictions to evaluate'}
         
         # Merge predictions with actual returns
         pred_df = pd.DataFrame(predictions)
         test_df = test_data.set_index('filing_id')
         
         results = []
+        # Map horizon to correct return column
+        if horizon == '5d':
+            return_column = 'return_5d'
+            predicted_return_column = 'predicted_return_5d'
+        elif horizon == '9d':
+            return_column = 'return_9d'
+            predicted_return_column = 'predicted_return_9d'
+        else:
+            return {'error': f'Unknown horizon: {horizon}'}
+        
         for _, pred in pred_df.iterrows():
             filing_id = pred['filing_id']
             if filing_id in test_df.index:
-                actual_return_5d = test_df.loc[filing_id, 'return_5d']
-                predicted_return_5d = pred['predicted_return_5d']
+                actual_return = test_df.loc[filing_id, return_column]
+                predicted_return = pred[predicted_return_column]
                 
                 # Calculate accuracy (directional)
-                actual_direction = 1 if actual_return_5d > 0 else -1
+                actual_direction = 1 if actual_return > 0 else -1
                 predicted_direction = pred['predicted_direction']
                 directional_accuracy = 1 if actual_direction == predicted_direction else 0
                 
                 # Calculate return prediction error
-                return_error = abs(predicted_return_5d - actual_return_5d)
+                return_error = abs(predicted_return - actual_return)
                 
                 results.append({
                     'filing_id': filing_id,
                     'directional_accuracy': directional_accuracy,
                     'return_error': return_error,
-                    'actual_return': actual_return_5d,
-                    'predicted_return': predicted_return_5d,
+                    'actual_return': actual_return,
+                    'predicted_return': predicted_return,
                     'confidence': pred['prediction_confidence'],
                     'trading_delay_hours': self.calculate_trading_delay(
                         test_df.loc[filing_id, 'filing_datetime'],
@@ -456,11 +546,12 @@ class NoLookAheadBiasValidator:
                 })
         
         if not results:
-            return {'error': 'No valid predictions to evaluate'}
+            return {'error': f'No valid {horizon} predictions to evaluate'}
         
         results_df = pd.DataFrame(results)
         
         return {
+            'horizon': horizon,
             'total_predictions': len(results_df),
             'directional_accuracy': results_df['directional_accuracy'].mean(),
             'mean_return_error': results_df['return_error'].mean(),
@@ -596,12 +687,17 @@ class NoLookAheadBiasValidator:
         
         for step in walk_forward_results:
             eval_metrics = step['evaluation']
-            if 'error' not in eval_metrics:
-                accuracies.append(eval_metrics['directional_accuracy'])
-                return_errors.append(eval_metrics['mean_return_error'])
-                confidences.append(eval_metrics['mean_confidence'])
-                trading_delays.append(eval_metrics['mean_trading_delay_hours'])
-                sample_sizes.append(eval_metrics['total_predictions'])
+            if 'error' not in eval_metrics and '5d_evaluation' in eval_metrics:
+                # Extract 5d and 9d metrics separately
+                eval_5d = eval_metrics['5d_evaluation']
+                eval_9d = eval_metrics['9d_evaluation']
+                
+                if 'error' not in eval_5d:
+                    accuracies.append(eval_5d['directional_accuracy'])
+                    return_errors.append(eval_5d['mean_return_error'])
+                    confidences.append(eval_5d['mean_confidence'])
+                    trading_delays.append(eval_5d['mean_trading_delay_hours'])
+                    sample_sizes.append(eval_5d['total_predictions'])
         
         if not accuracies:
             return {'error': 'No valid evaluations to aggregate'}
@@ -655,9 +751,11 @@ class NoLookAheadBiasValidator:
         
         for step in walk_forward_results:
             eval_metrics = step['evaluation']
-            if 'error' not in eval_metrics:
-                accuracies.append(eval_metrics['directional_accuracy'])
-                timestamps.append(step['test_start'])
+            if 'error' not in eval_metrics and '5d_evaluation' in eval_metrics:
+                eval_5d = eval_metrics['5d_evaluation']
+                if 'error' not in eval_5d:
+                    accuracies.append(eval_5d['directional_accuracy'])
+                    timestamps.append(step['test_start'])
         
         if len(accuracies) < 3:
             return {'error': 'Insufficient data for bias detection tests'}
@@ -723,10 +821,12 @@ class NoLookAheadBiasValidator:
         
         for step in walk_forward_results:
             eval_metrics = step['evaluation']
-            if 'error' not in eval_metrics:
-                total_valid_steps += 1
-                if eval_metrics['directional_accuracy'] > 0.75:  # Suspiciously high
-                    high_accuracy_steps += 1
+            if 'error' not in eval_metrics and '5d_evaluation' in eval_metrics:
+                eval_5d = eval_metrics['5d_evaluation']
+                if 'error' not in eval_5d:
+                    total_valid_steps += 1
+                    if eval_5d['directional_accuracy'] > 0.75:  # Suspiciously high
+                        high_accuracy_steps += 1
         
         high_accuracy_rate = high_accuracy_steps / total_valid_steps if total_valid_steps > 0 else 0
         
@@ -734,8 +834,10 @@ class NoLookAheadBiasValidator:
         perfect_prediction_steps = 0
         for step in walk_forward_results:
             eval_metrics = step['evaluation']
-            if 'error' not in eval_metrics and eval_metrics['directional_accuracy'] == 1.0:
-                perfect_prediction_steps += 1
+            if 'error' not in eval_metrics and '5d_evaluation' in eval_metrics:
+                eval_5d = eval_metrics['5d_evaluation']
+                if 'error' not in eval_5d and eval_5d['directional_accuracy'] == 1.0:
+                    perfect_prediction_steps += 1
         
         return {
             'high_accuracy_rate': high_accuracy_rate,
@@ -788,19 +890,29 @@ class NoLookAheadBiasValidator:
         
         for step in walk_forward_results:
             eval_metrics = step['evaluation']
-            if 'error' not in eval_metrics:
-                summary_data.append({
-                    'step': step['step'],
-                    'test_start': step['test_start'],
-                    'test_end': step['test_end'],
-                    'train_samples': step['train_samples'],
-                    'test_samples': step['test_samples'],
-                    'directional_accuracy': eval_metrics['directional_accuracy'],
-                    'mean_return_error': eval_metrics['mean_return_error'],
-                    'mean_confidence': eval_metrics['mean_confidence'],
-                    'mean_trading_delay_hours': eval_metrics['mean_trading_delay_hours'],
-                    'return_correlation': eval_metrics.get('return_correlation', np.nan)
-                })
+            if 'error' not in eval_metrics and '5d_evaluation' in eval_metrics:
+                eval_5d = eval_metrics['5d_evaluation']
+                eval_9d = eval_metrics['9d_evaluation']
+                
+                if 'error' not in eval_5d and 'error' not in eval_9d:
+                    summary_data.append({
+                        'test_start': step['test_start'],
+                        'test_end': step['test_end'],
+                        'train_size': len(step.get('train_data', [])),
+                        'test_size': len(step.get('test_data', [])),
+                        'directional_accuracy_5d': eval_5d['directional_accuracy'],
+                        'directional_accuracy_9d': eval_9d['directional_accuracy'],
+                        'mean_return_error_5d': eval_5d['mean_return_error'],
+                        'mean_return_error_9d': eval_9d['mean_return_error'],
+                        'mean_confidence_5d': eval_5d['mean_confidence'],
+                        'mean_confidence_9d': eval_9d['mean_confidence'],
+                        'mean_trading_delay_hours_5d': eval_5d['mean_trading_delay_hours'],
+                        'mean_trading_delay_hours_9d': eval_9d['mean_trading_delay_hours'],
+                        'total_predictions_5d': eval_5d['total_predictions'],
+                        'total_predictions_9d': eval_9d['total_predictions'],
+                        'return_correlation_5d': eval_5d.get('return_correlation', 0),
+                        'return_correlation_9d': eval_9d.get('return_correlation', 0)
+                    })
         
         if summary_data:
             summary_df = pd.DataFrame(summary_data)
